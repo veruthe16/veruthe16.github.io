@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Gunnan Store</title>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
+<style>
+
+/* GENERAL */
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#f5f6fa;
+}
+
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 40px;
+background:black;
+color:white;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+letter-spacing:2px;
+}
+
+.cart{
+font-size:16px;
+}
+
+/* HERO */
+
+.hero{
+text-align:center;
+padding:60px 20px;
+background:linear-gradient(135deg,#000,#333);
+color:white;
+}
+
+/* SERVICES GRID */
+
+.services{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:40px;
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* SERVICE CARD */
+
+.service{
+background:white;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 12px 30px rgba(0,0,0,0.15);
+transition:all 0.3s ease;
+text-align:center;
+position:relative;
+transform:scale(1);
+}
+
+.service:hover{
+transform:scale(1.05);
+box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+.service img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+/* BADGE */
+
+.badge{
+position:absolute;
+top:15px;
+left:15px;
+background:#ff4757;
+color:white;
+padding:6px 10px;
+font-size:12px;
+border-radius:6px;
+}
+
+/* CONTENT */
+
+.service-content{
+padding:20px;
+}
+
+.service h3{
+margin:5px 0;
+}
+
+.service p{
+font-size:14px;
+color:#666;
+}
+
+/* STARS */
+
+.stars{
+color:gold;
+font-size:18px;
+margin:6px 0;
+}
+
+/* BUTTONS */
+
+.buy-btn{
+display:block;
+width:80%;
+margin:10px auto;
+padding:12px;
+border:none;
+border-radius:8px;
+background:linear-gradient(45deg,#28a745,#4cd964);
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.buy-btn:hover{
+opacity:0.9;
+}
+
+.premium{
+background:linear-gradient(45deg,#000,#444);
+}
+
+.premium:hover{
+opacity:0.9;
+}
+
+/* CHECKOUT */
+
+.checkout{
+text-align:center;
+margin:40px;
+}
+
+/* FOUNDERS */
+
+.founders{
+text-align:center;
+padding:60px 20px;
+background:white;
+}
+
+.founder-grid{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+margin-top:30px;
+}
+
+.founder img{
+width:150px;
+height:150px;
+border-radius:50%;
+object-fit:cover;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+
+footer{
+background:black;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.services{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">GUNNAN STORE</div>
+
+<div class="cart">
+🛒 Cart: <span id="cartCount">0</span>
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>The Gunnan Store</h1>
+<p>Explore our premium services</p>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section class="services">
+
+<!-- SERVICE 1 -->
+
+<div class="service" data-aos="fade-up">
+
+<div class="badge">Best Seller</div>
+
+<img src="product1.jpg">
+
+<div class="service-content">
+
+<h3>OG Kannan</h3>
+
+<div class="stars">★★★★★</div>
+
+<p>The GOAT of the store.</p>
+
+<button class="buy-btn" onclick="addToCart('OG Kannan Calling')">Calling (1hr) ₹300</button>
+
+<a href="https://wa.me/919999999999?text=I want to book OG Kannan for an offline date">
+<button class="buy-btn premium">Offline Date ₹800</button>
+</a>
+
+</div>
+
+</div>
+
+<!-- SERVICE 2 -->
+
+<div class="service" data-aos="fade-up">
+
+<div class="badge">Popular</div>
+
+<img src="product2.jpg">
+
+<div class="service-content">
+
+<h3>Pushpan</h3>
+
+<div class="stars">★★★★☆</div>
+
+<p>Calm, cool and loyal.</p>
+
+<button class="buy-btn" onclick="addToCart('Pushpan Calling')">Calling (1hr) ₹250</button>
+
+<a href="https://wa.me/919999999999?text=I want to book Pushpan for an offline date">
+<button class="buy-btn premium">Offline Date ₹600</button>
+</a>
+
+</div>
+
+</div>
+
+<!-- SERVICE 3 -->
+
+<div class="service" data-aos="fade-up">
+
+<div class="badge">Limited</div>
+
+<img src="product3.jpg">
+
+<div class="service-content">
+
+<h3>Vishnu</h3>
+
+<div class="stars">★★★★★</div>
+
+<p>Brahmana kutty, Vishwasikaam.</p>
+
+<button class="buy-btn" onclick="addToCart('Vishnu Calling')">Calling (1hr) ₹200</button>
+
+<a href="https://wa.me/919999999999?text=I want to book Vishnu for an offline date">
+<button class="buy-btn premium">Offline Date ₹600</button>
+</a>
+
+</div>
+
+</div>
+
+<!-- SERVICE 4 -->
+
+<div class="service" data-aos="fade-up">
+
+<img src="product4.jpg">
+
+<div class="service-content">
+
+<h3>Raju</h3>
+
+<div class="stars">★★★★☆</div>
+
+<p>Thankam, nalla manas.</p>
+
+<button class="buy-btn" onclick="addToCart('Raju Calling')">Calling (1hr) ₹200</button>
+
+<a href="https://wa.me/919999999999?text=I want to book Raju for an offline date">
+<button class="buy-btn premium">Offline Date ₹500</button>
+</a>
+
+</div>
+
+</div>
+
+<!-- SERVICE 5 -->
+
+<div class="service" data-aos="fade-up">
+
+<img src="product6.jpg">
+
+<div class="service-content">
+
+<h3>Krishna</h3>
+
+<div class="stars">★★★★☆</div>
+
+<p>Kidilan body, stylish.</p>
+
+<button class="buy-btn" onclick="addToCart('Uthamdas Calling')">Calling (1hr) ₹250</button>
+
+<a href="https://wa.me/919999999999?text=I want to book Uthamdas for an offline date">
+<button class="buy-btn premium">Offline Date ₹550</button>
+</a>
+
+</div>
+
+</div>
+
+<!-- SERVICE 6 -->
+
+<div class="service" data-aos="fade-up">
+
+<img src="product7.jpg">
+
+<div class="service-content">
+
+<h3>Arun</h3>
+
+<div class="stars">★★★★☆</div>
+
+<p>Super duper, lovely.</p>
+
+<button class="buy-btn" onclick="addToCart('Arun Calling')">Calling (1hr) ₹150</button>
+
+<a href="https://wa.me/919999999999?text=I want to book Arun for an offline date">
+<button class="buy-btn premium">Offline Date ₹400</button>
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CHECKOUT -->
+
+<div class="checkout">
+
+<a href="checkout.html">
+<button class="buy-btn premium">Proceed to Checkout</button>
+</a>
+
+</div>
+
+
+<!-- FOUNDER -->
+
+<section class="founders">
+
+<h2>Founder</h2>
+
+<div class="founder-grid">
+
+<div class="founder">
+
+<img src="founder1.jpg">
+
+<h3>Pradwidh S Narayanan</h3>
+<p>Founder</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<p>© 2026 The Gunnan Store</p>
+
+</footer>
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+
+AOS.init();
+
+/* CART */
+
+let cart=0;
+let items=[];
+
+function addToCart(service){
+
+cart++;
+items.push(service);
+
+document.getElementById("cartCount").innerText=cart;
+
+localStorage.setItem("cartItems",JSON.stringify(items));
+
+alert(service + " added to cart");
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Checkout</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f4f4;
+text-align:center;
+padding-top:80px;
+}
+
+.checkout-box{
+
+background:white;
+padding:40px;
+max-width:400px;
+margin:auto;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+
+}
+
+input{
+
+width:90%;
+padding:10px;
+margin:10px 0;
+border-radius:6px;
+border:1px solid #ccc;
+
+}
+
+button{
+
+background:black;
+color:white;
+padding:12px 20px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+
+}
+
+button:hover{
+background:#333;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="checkout-box">
+
+<h2>Checkout</h2>
+
+<input placeholder="Name">
+
+<input placeholder="Address">
+
+<input placeholder="Card Number">
+
+<input placeholder="CVV">
+
+<br><br>
+
+<button onclick="pay()">Pay Now</button>
+
+</div>
+
+<script>
+
+function pay(){
+
+alert("Payment Successful!");
+
+}
+
+</script>
+
+</body>
+
+</html>
+```
